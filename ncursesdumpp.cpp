@@ -138,11 +138,6 @@ int main() {
             Sleep(200);
         }
     }
-
-    endwin();
-    return 0;
-}
-
     endwin();
     return 0;
 } 
