@@ -1,6 +1,8 @@
 #include <ncurses/curses.h>
 #include <string>
 #include <ctime>
+#include <thread>
+#include <chrono>
 
 int main() {
     int x = 10, y = 10;
