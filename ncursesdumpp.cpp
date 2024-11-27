@@ -10,7 +10,7 @@ void loadingScreen() {
     for (int i = 0; i <= 100; i += 25) {
         mvprintw(10, 10, "Loading: %d%%", i);
         refresh();
-        sleep(1);
+        sleep(1); 
     }
 }
 
@@ -29,7 +29,10 @@ void readFile() {
     clear();
     std::ifstream file("example.txt", std::ios::in);
     if (!file) {
+        init_pair(1, COLOR_RED, COLOR_BLACK);
+        attron(COLOR_PAIR(1));
         mvprintw(10, 10, "Tidak bisa membuka file!");
+        attroff(COLOR_PAIR(1));
     } else {
         std::string line;
         int lineNum = 0;
@@ -46,16 +49,19 @@ void writeFile() {
     clear();
     std::ofstream file("example.txt", std::ios::out | std::ios::app);
     if (!file) {
-        mvprintw(10, 10, "Tidak bisa membuka file untuk menulis!");
-    } else {
-        init_pair(1, COLOR_GREEN, COLOR_BLACK);
+        init_pair(1, COLOR_RED, COLOR_BLACK);
         attron(COLOR_PAIR(1));
-        file << "DDP Selesai.\n";
-        mvprintw(10, 10, "Berhasil Menamatkan DDP!");
+        mvprintw(10, 10, "Tidak bisa membuka file untuk menulis!");
         attroff(COLOR_PAIR(1));
+    } else {
+        init_pair(2, COLOR_GREEN, COLOR_BLACK); 
+        attron(COLOR_PAIR(2));
+        file << "DDP Selesai.\n";
+        mvprintw(10, 10, "Berhasil Menamatkan DDP!"); 
+        attroff(COLOR_PAIR(2)); 
     }
     file.close();
-    sleep(1);
+    sleep(1); 
     getch();
 }
 
@@ -68,7 +74,7 @@ void deleteFile() {
         mvprintw(10, 10, "Tidak bisa menghapus file 'example.txt'.");
     }
     refresh();
-    sleep(2);
+    sleep(2); 
 }
 
 int main() {
@@ -76,6 +82,10 @@ int main() {
     start_color();
     noecho();
     cbreak();
+
+    init_pair(1, COLOR_RED, COLOR_BLACK); 
+    init_pair(2, COLOR_GREEN, COLOR_BLACK); 
+
     loadingScreen();
     
     while (true) {
@@ -104,7 +114,10 @@ int main() {
                 endwin();
                 return 0;
             default:
+                clear();
+                attron(COLOR_PAIR(1)); 
                 mvprintw(10, 10, "Pilihan tidak valid! Tekan tombol apapun untuk melanjutkan.");
+                attroff(COLOR_PAIR(1)); 
                 refresh();
                 getch();
                 break;
@@ -112,4 +125,4 @@ int main() {
     }
     endwin();
     return 0;
-} 
+}
