@@ -110,34 +110,6 @@ int main() {
                 break;
         }
     }
-int main() {
-    initscr();
-    start_color();
-
-    // Inisialisasi pasangan warna
-    init_pair(1, COLOR_BLUE, COLOR_WHITE); 
-    init_pair(2, COLOR_BLACK, COLOR_GREEN);
-
-    // Loop untuk animasi loading
-    for (int i = 0; i < 3; i++) {
-        attron(COLOR_PAIR(1));
-        mvprintw(26, 100, "Loading....");
-        attroff(COLOR_PAIR(1));
-
-        attron(COLOR_PAIR(1));
-        mvprintw(27, 100, "-------------------");
-        mvprintw(28, 100, "|                 |");
-        mvprintw(29, 100, "-------------------");
-        attroff(COLOR_PAIR(1));
-
-        for (int f = 0; f < 18; f++) {
-            attron(COLOR_PAIR(1));
-            mvprintw(28, 101 + f, "->");
-            attroff(COLOR_PAIR(1));
-            refresh();
-            Sleep(200);
-        }
-    }
     endwin();
     return 0;
 } 
