@@ -20,7 +20,7 @@ void textAnimation() {
     for (size_t i = 0; i <= message.length(); ++i) {
         mvprintw(10, 10, "%s", message.substr(0, i).c_str());
         refresh();
-        usleep(200000); // 200000 mikrodetik = 0.2 detik
+        usleep(200000); 
     }
     getch();
 }
